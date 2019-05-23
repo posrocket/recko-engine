@@ -34,16 +34,16 @@ class ReckoEngine:
     def similar_items(self):
         similarity_values = {}
 
-        for key_one in self.matrix:
+        for key_one in self.feature_matrix:
             item_similarity = []
-            frequency = np.count_nonzero(self.matrix[key_one])
+            frequency = np.count_nonzero(self.feature_matrix[key_one])
 
             if frequency > 1:
-                for key_two in self.matrix:
+                for key_two in self.feature_matrix:
                     if key_one != key_two:
 
-                        key_one_vector = self.matrix[key_one]
-                        key_two_vector = self.matrix[key_two]
+                        key_one_vector = self.feature_matrix[key_one]
+                        key_two_vector = self.feature_matrix[key_two]
 
                         cos_similarity = self.calculate_cos(key_one_vector, key_two_vector)
 
