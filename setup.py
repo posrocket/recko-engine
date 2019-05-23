@@ -19,6 +19,7 @@ setup(
     packages=find_packages(exclude='test_app'),
     include_package_data=True,
     install_requires=[
+        "numpy == 1.15.4"
     ],
     tests_require=[],
     classifiers=[

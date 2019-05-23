@@ -31,21 +31,21 @@ class ReckoEngine:
             index += 1
         return matrix
 
-    def similar_items(self, matrix):
+    def similar_items(self):
         similarity_values = {}
 
-        for key_one in matrix:
+        for key_one in self.matrix:
             item_similarity = []
-            frequency = np.count_nonzero(matrix[key_one])
+            frequency = np.count_nonzero(self.matrix[key_one])
 
             if frequency > 1:
-                for key_two in matrix:
+                for key_two in self.matrix:
                     if key_one != key_two:
 
-                        key_one_vector = matrix[key_one]
-                        key_two_vector = matrix[key_two]
+                        key_one_vector = self.matrix[key_one]
+                        key_two_vector = self.matrix[key_two]
 
-                        cos_similarity = calculate_cos(key_one_vector, key_two_vector)
+                        cos_similarity = self.calculate_cos(key_one_vector, key_two_vector)
 
                         if cos_similarity != 0:
                             item_similarity.append([key_two, cos_similarity])
@@ -54,7 +54,5 @@ class ReckoEngine:
         return similarity_values
 
     def __init__(self, transactions_list):
-        feature_matrix = self.create_feature_matrix(transactions_list)
-        similarity_list = self.similar_items(feature_matrix)
-
-        return similarity_list
+        self.feature_matrix = self.create_feature_matrix(transactions_list)
+        self.similarity_list = self.similar_items()
