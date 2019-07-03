@@ -31,7 +31,7 @@ class ReckoEngine:
             index += 1
         return matrix
 
-    def similar_items(self):
+    def similar_items(self, sort_flag=True):
         similarity_values = {}
 
         for key_one in self.feature_matrix:
@@ -49,10 +49,14 @@ class ReckoEngine:
 
                         if cos_similarity != 0:
                             item_similarity.append([key_two, cos_similarity])
-                similarity_values.update({key_one: item_similarity})
+                if sort_flag:
+                    item_similarity.sort(key=lambda x: x[1], reverse=True)
+                    similarity_values.update({key_one: item_similarity})
+                else:
+                    similarity_values.update({key_one: item_similarity})
 
         return similarity_values
 
-    def __init__(self, transactions_list):
+    def __init__(self, transactions_list, sort_flag=True):
         self.feature_matrix = self.create_feature_matrix(transactions_list)
-        self.similarity_list = self.similar_items()
+        self.similarity_list = self.similar_items(sort_flag)
