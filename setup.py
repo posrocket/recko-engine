@@ -19,7 +19,7 @@ setup(
     packages=find_packages(exclude='test_app'),
     include_package_data=True,
     install_requires=[
-        "numpy == 1.15.4",
+        "numpy == 1.22.0",
         "scipy == 1.2.0"
     ],
     tests_require=[],
