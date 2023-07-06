@@ -20,7 +20,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "numpy == 1.15.4",
-        "scipy == 1.2.0"
+        "scipy == 1.10.0"
     ],
     tests_require=[],
     classifiers=[
